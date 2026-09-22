@@ -3,27 +3,21 @@ pipeline {
 
     stages {
 
+        stage('Install') {
+            steps {
+                sh 'npm install'
+            }
+        }
+
         stage('Build') {
             steps {
-                echo 'Building the application...'
+                sh 'echo "Building application..."'
             }
         }
 
         stage('Test') {
             steps {
-                echo 'Running tests...'
-            }
-        }
-
-        stage('Docker Build') {
-            steps {
-                echo 'Building Docker image...'
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo 'Deploying the application...'
+                sh 'npm test'
             }
         }
     }
