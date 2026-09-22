@@ -9,15 +9,15 @@ pipeline {
             }
         }
 
-        stage('Build') {
-            steps {
-                sh 'echo "Building application..."'
-            }
-        }
-
         stage('Test') {
             steps {
                 sh 'npm test'
+            }
+        }
+
+        stage('Docker Build') {
+            steps {
+                sh 'docker build -t devops-demo:1.0 .'
             }
         }
     }
